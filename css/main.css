@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+    --transition: transform .75s cubic-bezier(.075, 0.5, 0, 1); 
+}
+
+@font-face {
+    font-family: raleway_f;
+    src: url(../fonts/raleway-regular.woff2);
+}
+
+@font-face {
+    font-family: raleway_f;
+    src: url(../fonts/raleway-black.woff2);
+    font-weight: 900;
+}
+
+body {
+    background-color: black;
+    color: #fff;
+    font-family: raleway_f, sans-serif;
+    line-height: 1.55;
+    scroll-behavior: auto;
+}
+
+.main-header {
+    position: relative;
+}
+
+
+
+.layers {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.layer {
+    height: 130%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.layers__base {
+    transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
+    transition: var(--transition);
+    z-index: 0;
+}
+
+.layers__middle {
+    transform: translate3d(0, calc(var(--scrollTop) / 3), 0);
+}
+
+.layers__front {
+    transform: translate3d(0, calc(var(--scrollTop) / 5.7), 0);
+}
+
+.layers__header {
+    z-index: 1;
+    transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
+    will-change: transform;
+    transition: var(--transition);
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #1f173c;
+    text-shadow: 0 0 20px #3a2e63;
+}
+
+.layers__title {
+    font-size: calc(var(--index) * 2.5);
+    letter-spacing: calc(var(--index) / 2.25);
+}
+
+.layers__caption {
+    font-size: calc(var(--index) * 1.175);
+    letter-spacing: calc(var(--index) / 5.5);
+    margin-top: calc(var(--index) * 1.75);
+}
+
+.main-article {
+    position: relative;
+    height: 100vh;
+    text-align: center;
+}
+
+.main-article::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    height: calc(var(--index) * 5);
+    background-image: url(../img/leaves.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    bottom: calc(var(--index) * 3);
+}
+
+.main-header::before {
+    content: '';
+    /* display: inline-block; */
+    position: relative;
+    z-index: 99;
+    width: 100%;
+    height: calc(var(--index) * 5);
+    background-image: url(../img/leaves.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    bottom: calc(var(--index) * -3);
+}
+
+.main-article__content {
+    text-align: center;
+}
+
+.content {
+    transition: var(--transition);
+}
